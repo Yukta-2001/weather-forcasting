@@ -1,0 +1,166 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.8s ease;
+}
+
+/* Background gradient color based on temperature */
+body.cold {
+    background: linear-gradient(135deg, #00b4d8, #0077b6);
+}
+body.mild {
+    background: linear-gradient(135deg, #74c69d, #52b788);
+}
+body.warm {
+    background: linear-gradient(135deg, #f3a712, #f25c05);
+}
+body.hot {
+    background: linear-gradient(135deg, #f07b3f, #d7263d);
+}
+body.very-hot {
+    background: linear-gradient(135deg, #ff5733, #c70039);
+}
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Title */
+.title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Form styling */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    padding: 12px;
+    font-size: 1.2rem;
+    width: 70%;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: #333;
+}
+
+.search-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Weather Info */
+.weather-info {
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: slideIn 1s ease-in-out;
+}
+
+.card p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p span {
+    font-weight: 500;
+    color: #007bff;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    font-weight: 500;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .search-bar {
+        width: 60%;
+    }
+
+    .card p {
+        font-size: 1rem;
+    }
+}

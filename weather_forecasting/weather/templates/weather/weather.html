@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="{% static 'weather/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="{% if weather %}{% if weather.temperature < 0 %}cold{% elif weather.temperature < 15 %}mild{% elif weather.temperature < 25 %}warm{% elif weather.temperature < 35 %}hot{% else %}very-hot{% endif %}{% endif %}">
+
+    <div class="container">
+        <div class="weather-box">
+            <h1 class="title">Weather in {{ weather.city }}</h1>
+            <form method="POST" action="{% url 'weather_view' %}" class="search-form">
+                {% csrf_token %}
+                <input type="text" name="city" class="search-bar" placeholder="Enter city name" required>
+                <button type="submit" class="search-button">Get Weather</button>
+            </form>
+            {% if weather %}
+                <div class="weather-info">
+                    <div class="card">
+                        <p>Temperature: <span>{{ weather.temperature }} °C</span></p>
+                        <p>Max Temp: <span>{{ weather.max_temp }} °C</span></p>
+                        <p>Min Temp: <span>{{ weather.min_temp }} °C</span></p>
+                        <p>Humidity: <span>{{ weather.humidity }}%</span></p>
+                        <p>Latitude: <span>{{ weather.latitude }}</span></p>
+                        <p>Longitude: <span>{{ weather.longitude }}</span></p>
+                        <p>Date & Time: <span>{{ weather.date_time }}</span></p>
+                    </div>
+                </div>
+            {% else %}
+                <p class="error">{{ weather.error }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
